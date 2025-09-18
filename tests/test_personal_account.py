@@ -19,11 +19,9 @@ class TestPersonalAccount:
 
         WebDriverWait(driver, 3).until(
             expected_conditions.visibility_of_element_located(
-                MainPageLocators.MAKE_ORDER_BUTTON
+                MainPageLocators.PERSONAL_ACCOUNT_BUTTON
             )
-        )
-
-        driver.find_element(*MainPageLocators.PERSONAL_ACCOUNT_BUTTON).click()
+        ).click()
 
         WebDriverWait(driver, 3).until(
             expected_conditions.visibility_of_element_located(
