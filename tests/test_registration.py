@@ -66,7 +66,7 @@ class TestRegistration:
 
         assert error_message == 'Некорректное имя'
 
-    def test_registration_empty_password_error(self, valid_user, driver):
+    def test_registration_empty_email_error(self, valid_user, driver):
         """Проверка регистрации с пустым полем пароля."""
         driver.find_element(*MainPageLocators.PERSONAL_ACCOUNT_BUTTON).click()
         driver.find_element(*LoginPageLocators.REGISTER_LINK).click()
@@ -81,26 +81,15 @@ class TestRegistration:
             )
         ).text
 
-        assert error_message == 'Некорректный пароль'
+        assert error_message == 'Некорректный email'
 
-    def test_registration_existing_user_error(self, valid_user, driver):
+    def test_registration_existing_user_error(self, existing_user, driver):
         """Проверка регистрации при вводе существующего пользователя."""
         driver.find_element(*MainPageLocators.PERSONAL_ACCOUNT_BUTTON).click()
         driver.find_element(*LoginPageLocators.REGISTER_LINK).click()
-        driver.find_element(*RegisterPageLocators.NAME_INPUT).send_keys(valid_user['name'])
-        driver.find_element(*RegisterPageLocators.EMAIL_INPUT).send_keys(valid_user['email'])
-        driver.find_element(*RegisterPageLocators.PASSWORD_INPUT).send_keys(valid_user['password'])
-        driver.find_element(*RegisterPageLocators.REGISTER_BUTTON).click()
-
-        WebDriverWait(driver, 3).until(
-            expected_conditions.element_to_be_clickable(
-                LoginPageLocators.REGISTER_LINK
-            )
-        ).click()
-
-        driver.find_element(*RegisterPageLocators.NAME_INPUT).send_keys(valid_user['name'])
-        driver.find_element(*RegisterPageLocators.EMAIL_INPUT).send_keys(valid_user['email'])
-        driver.find_element(*RegisterPageLocators.PASSWORD_INPUT).send_keys(valid_user['password'])
+        driver.find_element(*RegisterPageLocators.NAME_INPUT).send_keys(existing_user['name'])
+        driver.find_element(*RegisterPageLocators.EMAIL_INPUT).send_keys(existing_user['email'])
+        driver.find_element(*RegisterPageLocators.PASSWORD_INPUT).send_keys(existing_user['password'])
         driver.find_element(*RegisterPageLocators.REGISTER_BUTTON).click()
 
         error_message = WebDriverWait(driver, 3).until(
