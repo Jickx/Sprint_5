@@ -96,9 +96,8 @@ class TestRegistration:
             expected_conditions.element_to_be_clickable(
                 LoginPageLocators.REGISTER_LINK
             )
-        )
+        ).click()
 
-        driver.find_element(*LoginPageLocators.REGISTER_LINK).click()
         driver.find_element(*RegisterPageLocators.NAME_INPUT).send_keys(valid_user['name'])
         driver.find_element(*RegisterPageLocators.EMAIL_INPUT).send_keys(valid_user['email'])
         driver.find_element(*RegisterPageLocators.PASSWORD_INPUT).send_keys(valid_user['password'])
