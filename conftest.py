@@ -1,6 +1,6 @@
 from selenium import webdriver
 from generators import UserGenerator
-from config import BASE_URL
+from config import BASE_URL, TEST_USER
 import pytest
 
 
@@ -20,3 +20,7 @@ def valid_user():
 @pytest.fixture
 def invalid_user():
     return UserGenerator.generate_user(valid_password=False)
+
+@pytest.fixture
+def existing_user():
+    return TEST_USER
