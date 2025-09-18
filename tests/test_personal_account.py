@@ -15,16 +15,21 @@ class TestPersonalAccount:
         driver.find_element(*MainPageLocators.PERSONAL_ACCOUNT_BUTTON).click()
         driver.find_element(*LoginPageLocators.EMAIL_INPUT).send_keys(existing_user['email'])
         driver.find_element(*LoginPageLocators.PASSWORD_INPUT).send_keys(existing_user['password'])
-        driver.find_element(*LoginPageLocators.LOGIN_BUTTON).click()
 
         WebDriverWait(driver, 3).until(
-            expected_conditions.visibility_of_element_located(
+            expected_conditions.element_to_be_clickable(
+                LoginPageLocators.LOGIN_BUTTON
+            )
+        ).click()
+
+        WebDriverWait(driver, 3).until(
+            expected_conditions.element_to_be_clickable(
                 MainPageLocators.PERSONAL_ACCOUNT_BUTTON
             )
         ).click()
 
         WebDriverWait(driver, 3).until(
-            expected_conditions.visibility_of_element_located(
+            expected_conditions.element_to_be_clickable(
                 ProfilePageLocators.PROFILE_LINK
             )
         )
@@ -35,16 +40,26 @@ class TestPersonalAccount:
         driver.find_element(*MainPageLocators.PERSONAL_ACCOUNT_BUTTON).click()
         driver.find_element(*LoginPageLocators.EMAIL_INPUT).send_keys(existing_user['email'])
         driver.find_element(*LoginPageLocators.PASSWORD_INPUT).send_keys(existing_user['password'])
-        driver.find_element(*LoginPageLocators.LOGIN_BUTTON).click()
-
-        driver.find_element(*MainPageLocators.PERSONAL_ACCOUNT_BUTTON).click()
-
         WebDriverWait(driver, 3).until(
-            expected_conditions.visibility_of_element_located(
+            expected_conditions.element_to_be_clickable(
+                LoginPageLocators.LOGIN_BUTTON
+            )
+        ).click()
+        WebDriverWait(driver, 3).until(
+            expected_conditions.element_to_be_clickable(
+                MainPageLocators.PERSONAL_ACCOUNT_BUTTON
+            )
+        ).click()
+        WebDriverWait(driver, 3).until(
+            expected_conditions.element_to_be_clickable(
                 ProfilePageLocators.CONSTRUCT_BUTTON
             )
         ).click()
-
+        WebDriverWait(driver, 3).until(
+            expected_conditions.element_to_be_clickable(
+                MainPageLocators.MAKE_ORDER_BUTTON
+            )
+        )
         assert driver.current_url == BASE_URL
 
     def test_personal_account_constructor_logo(self, existing_user, driver):
@@ -52,12 +67,20 @@ class TestPersonalAccount:
         driver.find_element(*MainPageLocators.PERSONAL_ACCOUNT_BUTTON).click()
         driver.find_element(*LoginPageLocators.EMAIL_INPUT).send_keys(existing_user['email'])
         driver.find_element(*LoginPageLocators.PASSWORD_INPUT).send_keys(existing_user['password'])
-        driver.find_element(*LoginPageLocators.LOGIN_BUTTON).click()
-
-        driver.find_element(*MainPageLocators.PERSONAL_ACCOUNT_BUTTON).click()
+        WebDriverWait(driver, 3).until(
+            expected_conditions.element_to_be_clickable(
+                LoginPageLocators.LOGIN_BUTTON
+            )
+        ).click()
 
         WebDriverWait(driver, 3).until(
-            expected_conditions.visibility_of_element_located(
+            expected_conditions.element_to_be_clickable(
+                MainPageLocators.PERSONAL_ACCOUNT_BUTTON
+            )
+        ).click()
+
+        WebDriverWait(driver, 3).until(
+            expected_conditions.element_to_be_clickable(
                 ProfilePageLocators.LOGO_LINK
             )
         ).click()
