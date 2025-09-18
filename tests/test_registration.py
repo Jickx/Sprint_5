@@ -1,4 +1,3 @@
-from selenium.common import NoSuchElementException
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 from config import BASE_URL
@@ -9,6 +8,7 @@ from locators import MainPageLocators, LoginPageLocators, RegisterPageLocators
 class TestRegistration:
 
     def test_success_registration(self, valid_user, driver):
+        """Проверка успешной регистрации."""
         driver.find_element(*MainPageLocators.PERSONAL_ACCOUNT_BUTTON).click()
         driver.find_element(*LoginPageLocators.REGISTER_LINK).click()
         driver.find_element(*RegisterPageLocators.NAME_INPUT).send_keys(valid_user['name'])
@@ -30,9 +30,10 @@ class TestRegistration:
                 MainPageLocators.MAKE_ORDER_BUTTON
             )
         )
-        assert BASE_URL in driver.current_url
+        assert driver.current_url == BASE_URL
 
     def test_registration_invalid_password_error(self, invalid_user, driver):
+        """Проверка регистрации с невалидным паролем 5 символов."""
         driver.find_element(*MainPageLocators.PERSONAL_ACCOUNT_BUTTON).click()
         driver.find_element(*LoginPageLocators.REGISTER_LINK).click()
         driver.find_element(*RegisterPageLocators.NAME_INPUT).send_keys(invalid_user['name'])
@@ -49,6 +50,7 @@ class TestRegistration:
         assert error_message == 'Некорректный пароль'
 
     def test_registration_empty_name_error(self, valid_user, driver):
+        """Проверка регистрации с пустым полем имени."""
         driver.find_element(*MainPageLocators.PERSONAL_ACCOUNT_BUTTON).click()
         driver.find_element(*LoginPageLocators.REGISTER_LINK).click()
         driver.find_element(*RegisterPageLocators.NAME_INPUT).send_keys('')
@@ -65,6 +67,7 @@ class TestRegistration:
         assert error_message == 'Некорректное имя'
 
     def test_registration_empty_password_error(self, valid_user, driver):
+        """Проверка регистрации с пустым полем пароля."""
         driver.find_element(*MainPageLocators.PERSONAL_ACCOUNT_BUTTON).click()
         driver.find_element(*LoginPageLocators.REGISTER_LINK).click()
         driver.find_element(*RegisterPageLocators.NAME_INPUT).send_keys(valid_user['name'])
@@ -81,6 +84,7 @@ class TestRegistration:
         assert error_message == 'Некорректный пароль'
 
     def test_registration_existing_user_error(self, valid_user, driver):
+        """Проверка регистрации при вводе существующего пользователя."""
         driver.find_element(*MainPageLocators.PERSONAL_ACCOUNT_BUTTON).click()
         driver.find_element(*LoginPageLocators.REGISTER_LINK).click()
         driver.find_element(*RegisterPageLocators.NAME_INPUT).send_keys(valid_user['name'])
