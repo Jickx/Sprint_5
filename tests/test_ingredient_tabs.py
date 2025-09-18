@@ -21,7 +21,7 @@ class TestIngredientsTabs:
 
     def test_click_sauce_tab_scrolls_to_sauces(self, driver):
         """Проверка перехода в раздел Соусы при нажатии вкладки Соусы."""
-        active_text = driver.find_element(*BurgerIngredientLocators.ACTIVE_TAB)
+        active_text = driver.find_element(*BurgerIngredientLocators.ACTIVE_TAB).text
         if active_text != "Соусы":
             driver.find_element(*BurgerIngredientLocators.SAUCES_TAB).click()
 
@@ -33,9 +33,9 @@ class TestIngredientsTabs:
 
         assert driver.find_element(*BurgerIngredientLocators.ACTIVE_TAB).text == "Соусы"
 
-    def test_click_f_tab_scrolls_to_sauces(self, driver):
+    def test_click_filling_tab_scrolls_to_fillings(self, driver):
         """Проверка перехода в раздел Начинки при нажатии вкладки Начинки."""
-        active_text = driver.find_element(*BurgerIngredientLocators.ACTIVE_TAB)
+        active_text = driver.find_element(*BurgerIngredientLocators.ACTIVE_TAB).text
         if active_text != "Начинки":
             driver.find_element(*BurgerIngredientLocators.FILLINGS_TAB).click()
 
