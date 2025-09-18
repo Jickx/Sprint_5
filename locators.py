@@ -33,3 +33,4 @@ class ProfilePageLocators:
     PROFILE_LINK = (By.XPATH, "//a[@href='/account/profile']")
     CONSTRUCT_BUTTON = (By.XPATH, "//li/a[@href='/']")
     LOGO_LINK = (By.XPATH, "//div/a[@href='/']")
+    EXIT_BUTTON = (By.XPATH, "//button[text()='Выход']")
