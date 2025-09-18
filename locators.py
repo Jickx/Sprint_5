@@ -34,3 +34,13 @@ class ProfilePageLocators:
     CONSTRUCT_BUTTON = (By.XPATH, "//li/a[@href='/']")
     LOGO_LINK = (By.XPATH, "//div/a[@href='/']")
     EXIT_BUTTON = (By.XPATH, "//button[text()='Выход']")
+
+
+class BurgerIngredientLocators:
+    BUNS_TAB = (By.XPATH, "//span[text()='Булки']")
+    SAUCES_TAB = (By.XPATH, "//span[text()='Соусы']")
+    FILLINGS_TAB = (By.XPATH, "//span[text()='Начинки']")
+    BUNS_SECTION = (By.XPATH, "//h2[text()='Булки']")
+    SAUCES_SECTION = (By.XPATH, "//h2[text()='Соусы']")
+    FILLINGS_SECTION = (By.XPATH, "//h2[text()='Начинки']")
+    ACTIVE_TAB = (By.XPATH, "//div[contains(@class,'tab_tab_type_current')]//span")
