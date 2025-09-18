@@ -6,7 +6,7 @@ class UserGenerator:
 
     @staticmethod
     def generate_name():
-        return f'valentin_sharonov_30_{random.randint(100, 999)}'
+        return f'valentin_sharonov_30_{random.randint(1000, 9999)}'
 
     @staticmethod
     def generate_email(name):
