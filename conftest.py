@@ -22,7 +22,3 @@ def valid_user():
 @pytest.fixture
 def invalid_user():
     return UserGenerator.generate_user(valid_password=False)
-
-@pytest.fixture
-def existing_user():
-    return TEST_USER

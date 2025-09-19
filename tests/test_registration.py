@@ -1,6 +1,7 @@
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 from urls import BASE_URL
+from config import TEST_USER
 
 from locators import MainPageLocators, LoginPageLocators, RegisterPageLocators
 
@@ -83,13 +84,13 @@ class TestRegistration:
 
         assert error_message == 'Некорректный email'
 
-    def test_registration_existing_user_error(self, existing_user, driver):
+    def test_registration_existing_user_error(self, driver):
         """Проверка регистрации при вводе существующего пользователя."""
         driver.find_element(*MainPageLocators.PERSONAL_ACCOUNT_BUTTON).click()
         driver.find_element(*LoginPageLocators.REGISTER_LINK).click()
-        driver.find_element(*RegisterPageLocators.NAME_INPUT).send_keys(existing_user['name'])
-        driver.find_element(*RegisterPageLocators.EMAIL_INPUT).send_keys(existing_user['email'])
-        driver.find_element(*RegisterPageLocators.PASSWORD_INPUT).send_keys(existing_user['password'])
+        driver.find_element(*RegisterPageLocators.NAME_INPUT).send_keys(TEST_USER['name'])
+        driver.find_element(*RegisterPageLocators.EMAIL_INPUT).send_keys(TEST_USER['email'])
+        driver.find_element(*RegisterPageLocators.PASSWORD_INPUT).send_keys(TEST_USER['password'])
         driver.find_element(*RegisterPageLocators.REGISTER_BUTTON).click()
 
         error_message = WebDriverWait(driver, 3).until(

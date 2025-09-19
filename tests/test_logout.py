@@ -1,5 +1,7 @@
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
+
+from config import TEST_USER
 from urls import LOGIN_URL
 from locators import (
     MainPageLocators,
@@ -9,11 +11,11 @@ from locators import (
 
 
 class TestLogout:
-    def test_logout_personal_account(self, existing_user, driver):
+    def test_logout_personal_account(self, driver):
         """Проверка выхода по кнопке «Выйти» в личном кабинете."""
         driver.find_element(*MainPageLocators.PERSONAL_ACCOUNT_BUTTON).click()
-        driver.find_element(*LoginPageLocators.EMAIL_INPUT).send_keys(existing_user['email'])
-        driver.find_element(*LoginPageLocators.PASSWORD_INPUT).send_keys(existing_user['password'])
+        driver.find_element(*LoginPageLocators.EMAIL_INPUT).send_keys(TEST_USER['email'])
+        driver.find_element(*LoginPageLocators.PASSWORD_INPUT).send_keys(TEST_USER['password'])
         driver.find_element(*LoginPageLocators.LOGIN_BUTTON).click()
 
         WebDriverWait(driver, 3).until(
