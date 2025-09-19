@@ -1,5 +1,7 @@
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
+
+from generators import UserGenerator
 from urls import BASE_URL
 from config import TEST_USER
 
@@ -8,8 +10,9 @@ from locators import MainPageLocators, LoginPageLocators, RegisterPageLocators
 
 class TestRegistration:
 
-    def test_success_registration(self, valid_user, driver):
+    def test_success_registration(self, driver):
         """Проверка успешной регистрации."""
+        valid_user = UserGenerator.generate_user()
         driver.find_element(*MainPageLocators.PERSONAL_ACCOUNT_BUTTON).click()
         driver.find_element(*LoginPageLocators.REGISTER_LINK).click()
         driver.find_element(*RegisterPageLocators.NAME_INPUT).send_keys(valid_user['name'])
@@ -33,8 +36,9 @@ class TestRegistration:
         )
         assert driver.current_url == BASE_URL
 
-    def test_registration_invalid_password_error(self, invalid_user, driver):
+    def test_registration_invalid_password_error(self, driver):
         """Проверка регистрации с невалидным паролем 5 символов."""
+        invalid_user = UserGenerator.generate_user(valid_password=False)
         driver.find_element(*MainPageLocators.PERSONAL_ACCOUNT_BUTTON).click()
         driver.find_element(*LoginPageLocators.REGISTER_LINK).click()
         driver.find_element(*RegisterPageLocators.NAME_INPUT).send_keys(invalid_user['name'])
