@@ -12,10 +12,11 @@
 
 ├── README.md                      # Описание проекта и инструкции 
 ├── config.py                      # Конфигурационные параметры тестов 
-├── conftest.py                    # Фикстуры и настройки pytest 
+├── conftest.py                    # Фикстура pytest 
 ├── generators.py                  # Генераторы тестовых данных 
 ├── locators.py                    # Локаторы элементов для Selenium 
-├── requirements.txt               # Список зависимостей проекта 
+├── urls.py                        # Содержит URL-адреса, используемые в тестах
+├── requirements.txt               # Список зависимостей проекта
 └── tests                           
     ├── test_ingredient_tabs.py    # Тесты вкладок ингредиентов 
     ├── test_login.py              # Тесты авторизации 
