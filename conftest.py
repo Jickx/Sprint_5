@@ -1,6 +1,7 @@
 from selenium import webdriver
 from generators import UserGenerator
-from config import BASE_URL, TEST_USER
+from urls import BASE_URL
+from config import TEST_USER
 import pytest
 
 

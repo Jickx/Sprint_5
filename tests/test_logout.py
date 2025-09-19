@@ -1,6 +1,6 @@
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
-from config import LOGIN_URL
+from urls import LOGIN_URL
 from locators import (
     MainPageLocators,
     LoginPageLocators,

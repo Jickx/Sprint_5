@@ -1,7 +1,7 @@
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
-from config import PERSONAL_ACCOUNT_URL, BASE_URL
+from urls import PERSONAL_ACCOUNT_URL, BASE_URL
 from locators import (
     MainPageLocators,
     LoginPageLocators,
